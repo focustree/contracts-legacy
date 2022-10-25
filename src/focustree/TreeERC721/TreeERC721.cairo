@@ -13,8 +13,10 @@ from openzeppelin.token.erc721.enumerable.library import ERC721Enumerable
 from openzeppelin.upgrades.library import Proxy
 
 //
-// Initializer
+// Proxy
 //
+
+// Externals
 
 @external
 func initializer{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
@@ -28,40 +30,21 @@ func initializer{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr
     return ();
 }
 
-//
-// Getters
-//
-
-@view
-func totalSupply{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}() -> (
-    totalSupply: Uint256
+@external
+func upgrade{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
+    new_implementation: felt
 ) {
-    let (totalSupply: Uint256) = ERC721Enumerable.total_supply();
-    return (totalSupply=totalSupply);
+    Proxy.assert_only_admin();
+    Proxy._set_implementation_hash(new_implementation);
+    return ();
 }
 
-@view
-func tokenByIndex{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}(
-    index: Uint256
-) -> (tokenId: Uint256) {
-    let (tokenId: Uint256) = ERC721Enumerable.token_by_index(index);
-    return (tokenId=tokenId);
-}
+//
+// ERC721
+//
 
-@view
-func tokenOfOwnerByIndex{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}(
-    owner: felt, index: Uint256
-) -> (tokenId: Uint256) {
-    let (tokenId: Uint256) = ERC721Enumerable.token_of_owner_by_index(owner, index);
-    return (tokenId=tokenId);
-}
 
-@view
-func supportsInterface{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
-    interfaceId: felt
-) -> (success: felt) {
-    return ERC165.supports_interface(interfaceId);
-}
+// Views
 
 @view
 func name{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (name: felt) {
@@ -71,6 +54,14 @@ func name{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() -> 
 @view
 func symbol{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (symbol: felt) {
     return ERC721.symbol();
+}
+
+@view
+func tokenURI{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
+    tokenId: Uint256
+) -> (tokenURI: felt) {
+    let (tokenURI: felt) = ERC721.token_uri(tokenId);
+    return (tokenURI=tokenURI);
 }
 
 @view
@@ -103,21 +94,11 @@ func isApprovedForAll{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_chec
 }
 
 @view
-func tokenURI{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
-    tokenId: Uint256
-) -> (tokenURI: felt) {
-    let (tokenURI: felt) = ERC721.token_uri(tokenId);
-    return (tokenURI=tokenURI);
-}
-
-@view
 func owner{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (owner: felt) {
     return Ownable.owner();
 }
 
-//
 // Externals
-//
 
 @external
 func approve{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}(
@@ -188,4 +169,47 @@ func transferOwnership{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_che
 func renounceOwnership{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() {
     Ownable.renounce_ownership();
     return ();
+}
+
+//
+// ERC165
+//
+
+// Views
+
+@view
+func supportsInterface{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
+    interfaceId: felt
+) -> (success: felt) {
+    return ERC165.supports_interface(interfaceId);
+}
+
+//
+// Enumerable
+//
+
+// Views
+
+@view
+func totalSupply{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}() -> (
+    totalSupply: Uint256
+) {
+    let (totalSupply: Uint256) = ERC721Enumerable.total_supply();
+    return (totalSupply=totalSupply);
+}
+
+@view
+func tokenByIndex{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}(
+    index: Uint256
+) -> (tokenId: Uint256) {
+    let (tokenId: Uint256) = ERC721Enumerable.token_by_index(index);
+    return (tokenId=tokenId);
+}
+
+@view
+func tokenOfOwnerByIndex{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}(
+    owner: felt, index: Uint256
+) -> (tokenId: Uint256) {
+    let (tokenId: Uint256) = ERC721Enumerable.token_of_owner_by_index(owner, index);
+    return (tokenId=tokenId);
 }
