@@ -1,0 +1,27 @@
+["protostar.config"]
+protostar_version = "0.6.0"
+
+["protostar.project"]
+libs_path = "lib"
+
+["protostar.shared_command_configs"]
+cairo-path = ["./lib/cairo_contracts/src", "./src"]
+
+["protostar.contracts"]
+main = ["src/main.cairo"]
+proxy = ["src/focustree/Proxy.cairo"]
+tree_erc721 = ["src/focustree/TreeERC721/TreeERC721.cairo"]
+
+[profile.devnet.protostar.deploy]
+gateway_url = "http://127.0.0.1:5050/"
+chain_id = 1536727068981429685321
+
+[profile.devnet.protostar.declare]
+gateway_url = "http://127.0.0.1:5050/"
+chain_id = 1536727068981429685321
+
+[profile.devnet.protostar.migrate]
+gateway_url = "http://127.0.0.1:5050/"
+chain_id = 1536727068981429685321
+account_address = "0x3fb42e3a0faa4814949a8fe0708087b75ecb945f9337ce87b3caa8c101ff442"
+private_key_path = "private/devnet.key"
