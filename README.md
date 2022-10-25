@@ -1,6 +1,6 @@
 ## Setup
 
-1. [Install protostar](https://docs.swmansion.com/protostar/docs/tutorials/installation).source ~./z
+1. [Install protostar](https://docs.swmansion.com/protostar/docs/tutorials/installation).
 2. Build the project:
 
 ```sh
