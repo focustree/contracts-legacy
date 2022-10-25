@@ -89,13 +89,35 @@
         "type": "event"
     },
     {
-        "inputs": [
+        "data": [
             {
-                "name": "name",
+                "name": "implementation",
+                "type": "felt"
+            }
+        ],
+        "keys": [],
+        "name": "Upgraded",
+        "type": "event"
+    },
+    {
+        "data": [
+            {
+                "name": "previousAdmin",
                 "type": "felt"
             },
             {
-                "name": "symbol",
+                "name": "newAdmin",
+                "type": "felt"
+            }
+        ],
+        "keys": [],
+        "name": "AdminChanged",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "name": "proxy_admin",
                 "type": "felt"
             },
             {
@@ -103,75 +125,19 @@
                 "type": "felt"
             }
         ],
-        "name": "constructor",
+        "name": "initializer",
         "outputs": [],
-        "type": "constructor"
-    },
-    {
-        "inputs": [],
-        "name": "totalSupply",
-        "outputs": [
-            {
-                "name": "totalSupply",
-                "type": "Uint256"
-            }
-        ],
-        "stateMutability": "view",
         "type": "function"
     },
     {
         "inputs": [
             {
-                "name": "index",
-                "type": "Uint256"
-            }
-        ],
-        "name": "tokenByIndex",
-        "outputs": [
-            {
-                "name": "tokenId",
-                "type": "Uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "name": "owner",
-                "type": "felt"
-            },
-            {
-                "name": "index",
-                "type": "Uint256"
-            }
-        ],
-        "name": "tokenOfOwnerByIndex",
-        "outputs": [
-            {
-                "name": "tokenId",
-                "type": "Uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "name": "interfaceId",
+                "name": "new_implementation",
                 "type": "felt"
             }
         ],
-        "name": "supportsInterface",
-        "outputs": [
-            {
-                "name": "success",
-                "type": "felt"
-            }
-        ],
-        "stateMutability": "view",
+        "name": "upgrade",
+        "outputs": [],
         "type": "function"
     },
     {
@@ -192,6 +158,23 @@
         "outputs": [
             {
                 "name": "symbol",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "tokenId",
+                "type": "Uint256"
+            }
+        ],
+        "name": "tokenURI",
+        "outputs": [
+            {
+                "name": "tokenURI",
                 "type": "felt"
             }
         ],
@@ -264,23 +247,6 @@
         "outputs": [
             {
                 "name": "isApproved",
-                "type": "felt"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "name": "tokenId",
-                "type": "Uint256"
-            }
-        ],
-        "name": "tokenURI",
-        "outputs": [
-            {
-                "name": "tokenURI",
                 "type": "felt"
             }
         ],
@@ -395,17 +361,6 @@
             {
                 "name": "tokenId",
                 "type": "Uint256"
-            }
-        ],
-        "name": "burn",
-        "outputs": [],
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "name": "tokenId",
-                "type": "Uint256"
             },
             {
                 "name": "tokenURI",
@@ -430,6 +385,84 @@
     {
         "inputs": [],
         "name": "renounceOwnership",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "interfaceId",
+                "type": "felt"
+            }
+        ],
+        "name": "supportsInterface",
+        "outputs": [
+            {
+                "name": "success",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "totalSupply",
+        "outputs": [
+            {
+                "name": "totalSupply",
+                "type": "Uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "index",
+                "type": "Uint256"
+            }
+        ],
+        "name": "tokenByIndex",
+        "outputs": [
+            {
+                "name": "tokenId",
+                "type": "Uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "owner",
+                "type": "felt"
+            },
+            {
+                "name": "index",
+                "type": "Uint256"
+            }
+        ],
+        "name": "tokenOfOwnerByIndex",
+        "outputs": [
+            {
+                "name": "tokenId",
+                "type": "Uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "tokenId",
+                "type": "Uint256"
+            }
+        ],
+        "name": "burn",
         "outputs": [],
         "type": "function"
     }

@@ -7,21 +7,44 @@ libs_path = "lib"
 ["protostar.shared_command_configs"]
 cairo-path = ["./lib/cairo_contracts/src", "./src"]
 
+["protostar.format"]
+target = ["src", "tests", "migrations"]
+
 ["protostar.contracts"]
-main = ["src/main.cairo"]
 proxy = ["src/focustree/Proxy.cairo"]
 tree_erc721 = ["src/focustree/TreeERC721/TreeERC721.cairo"]
 
-[profile.devnet.protostar.deploy]
+[profile.devnet.protostar.declare]
 gateway_url = "http://127.0.0.1:5050/"
 chain_id = 1536727068981429685321
 
-[profile.devnet.protostar.declare]
+[profile.devnet.protostar.deploy]
 gateway_url = "http://127.0.0.1:5050/"
 chain_id = 1536727068981429685321
 
 [profile.devnet.protostar.migrate]
 gateway_url = "http://127.0.0.1:5050/"
 chain_id = 1536727068981429685321
-account_address = "0x3fb42e3a0faa4814949a8fe0708087b75ecb945f9337ce87b3caa8c101ff442"
+# Account 0 address for seed 0
+account_address = "0x7e00d496e324876bbc8531f2d9a82bf154d1a04a50218ee74cdd372f75a551a"
 private_key_path = "private/devnet.key"
+
+[profile.testnet.protostar.declare]
+network = "testnet"
+account_address = "0x046a1aa85bb0E68Cd29fADBc81791208ddEbEe17886F075935e5b72f4AA898aA"
+private_key_path = "private/mainnet.key"
+
+[profile.testnet.protostar.deploy]
+network = "testnet"
+account_address = "0x046a1aa85bb0E68Cd29fADBc81791208ddEbEe17886F075935e5b72f4AA898aA"
+private_key_path = "private/mainnet.key"
+
+[profile.testnet.protostar.migrate]
+network = "testnet"
+account_address = "0x046a1aa85bb0E68Cd29fADBc81791208ddEbEe17886F075935e5b72f4AA898aA"
+private_key_path = "private/mainnet.key"
+
+[profile.mainnet.protostar.migrate]
+network = "mainnet"
+account_address = "0x046a1aa85bb0E68Cd29fADBc81791208ddEbEe17886F075935e5b72f4AA898aA"
+private_key_path = "private/mainnet.key"
