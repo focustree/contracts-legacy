@@ -7,13 +7,31 @@
 protostar build
 ```
 
-3. Run tests:
+3. Run the tests:
 
 ```sh
 protostar test
 ```
 
 ## Commands
+
+### Compile cairo contracts
+
+```sh
+protostar build
+```
+
+### Run tests
+
+```sh
+protostar test
+```
+
+### Format source code
+
+```sh
+protostar format
+```
 
 ### Install deps
 

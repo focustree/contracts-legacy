@@ -43,7 +43,6 @@ func upgrade{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(
 // ERC721
 //
 
-
 // Views
 
 @view
@@ -142,13 +141,6 @@ func mint{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}(
 }
 
 @external
-func burn{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}(tokenId: Uint256) {
-    ERC721.assert_only_token_owner(tokenId);
-    ERC721Enumerable._burn(tokenId);
-    return ();
-}
-
-@external
 func setTokenURI{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}(
     tokenId: Uint256, tokenURI: felt
 ) {
@@ -212,4 +204,13 @@ func tokenOfOwnerByIndex{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_c
 ) -> (tokenId: Uint256) {
     let (tokenId: Uint256) = ERC721Enumerable.token_of_owner_by_index(owner, index);
     return (tokenId=tokenId);
+}
+
+// Externals
+
+@external
+func burn{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}(tokenId: Uint256) {
+    ERC721.assert_only_token_owner(tokenId);
+    ERC721Enumerable._burn(tokenId);
+    return ();
 }
