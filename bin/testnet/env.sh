@@ -1,4 +1,4 @@
-
 export STARKNET_NETWORK="alpha-goerli"
 export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
-export ACCOUNT="__default__"
+export ACCOUNT="argent"
+export ACCOUNT_ADDRESS=0x046a1aa85bb0e68cd29fadbc81791208ddebee17886f075935e5b72f4aa898aa

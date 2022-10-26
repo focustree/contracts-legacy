@@ -94,5 +94,17 @@
         "name": "__l1_default__",
         "outputs": [],
         "type": "l1_handler"
+    },
+    {
+        "inputs": [],
+        "name": "get_implementation",
+        "outputs": [
+            {
+                "name": "implementation",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
     }
 ]

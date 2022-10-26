@@ -69,3 +69,15 @@ func __l1_default__{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_
     );
     return ();
 }
+
+//
+// View functions
+//
+
+@view
+func get_implementation{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (
+    implementation: felt
+) {
+    let (class_hash) = Proxy.get_implementation_hash();
+    return (implementation=class_hash);
+}
