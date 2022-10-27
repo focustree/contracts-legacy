@@ -4,7 +4,10 @@
 %lang starknet
 
 from starkware.cairo.common.cairo_builtins import HashBuiltin
-from starkware.cairo.common.uint256 import Uint256
+from starkware.cairo.common.uint256 import Uint256, uint256_add
+from starkware.cairo.common.math import assert_not_zero
+
+from starkware.starknet.common.syscalls import get_caller_address
 
 from openzeppelin.access.ownable.library import Ownable
 from openzeppelin.introspection.erc165.library import ERC165
@@ -133,10 +136,19 @@ func safeTransferFrom{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_chec
 
 @external
 func mint{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}(
-    to: felt, tokenId: Uint256
+    to: felt
 ) {
-    Ownable.assert_only_owner();
-    ERC721Enumerable._mint(to, tokenId);
+    let (minter) = TreeERC721_minter.read();
+    let (caller) = get_caller_address();
+    with_attr error_message("ERC721: caller is the zero address") {
+        assert_not_zero(caller);
+    }
+    with_attr error_message("ERC721: caller is not the minter") {
+        assert minter = caller;
+    }
+    let (tokenId: Uint256) = totalSupply();
+    let (newTokenId: Uint256, _) = uint256_add(tokenId, Uint256(1, 0));
+    ERC721Enumerable._mint(to, newTokenId);
     return ();
 }
 
@@ -212,5 +224,26 @@ func tokenOfOwnerByIndex{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_c
 func burn{pedersen_ptr: HashBuiltin*, syscall_ptr: felt*, range_check_ptr}(tokenId: Uint256) {
     ERC721.assert_only_token_owner(tokenId);
     ERC721Enumerable._burn(tokenId);
+    return ();
+}
+
+//
+// Mintsquare
+//
+
+@storage_var
+func TreeERC721_minter() -> (minter: felt) {
+}
+
+@view
+func minter{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}() -> (minter: felt) {
+    let (minter) = TreeERC721_minter.read();
+    return (minter,);
+}
+
+@external
+func setMinter{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_check_ptr}(newMinter: felt) {
+    Ownable.assert_only_owner();
+    TreeERC721_minter.write(newMinter);
     return ();
 }

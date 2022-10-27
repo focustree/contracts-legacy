@@ -346,10 +346,6 @@
             {
                 "name": "to",
                 "type": "felt"
-            },
-            {
-                "name": "tokenId",
-                "type": "Uint256"
             }
         ],
         "name": "mint",
@@ -463,6 +459,29 @@
             }
         ],
         "name": "burn",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "minter",
+        "outputs": [
+            {
+                "name": "minter",
+                "type": "felt"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "newMinter",
+                "type": "felt"
+            }
+        ],
+        "name": "setMinter",
         "outputs": [],
         "type": "function"
     }
