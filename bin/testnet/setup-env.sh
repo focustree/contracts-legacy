@@ -1,0 +1,6 @@
+export STARKNET_NETWORK="alpha-goerli"
+export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
+export ACCOUNT="__default__"
+export ACCOUNT_ADDRESS=0x06683a563773e1eb3d4005f478a5f0c532e24952125250fac63bf5ab645d1242
+
+source bin/setup-aliases.sh
