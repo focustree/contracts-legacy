@@ -13,6 +13,29 @@ protostar build
 protostar test
 ```
 
+## Deploy to testnet
+
+1. Build
+
+```sh
+protostar build
+```
+
+2. Declare
+
+```sh
+starknet_declare build/tree_erc721.json
+```
+
+3. Verify source code
+
+```sh
+starkscan
+```
+
+4. Upgrade implementation by calling `upgarde` on the proxy:
+   https://testnet.starkscan.co/contract/0x07b6d00f28db723199bb54ca74a879a5102c44141f0e93674b2cb25f8f253c62#write-contract
+
 ## Commands
 
 ### Compile cairo contracts
