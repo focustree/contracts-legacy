@@ -167,23 +167,6 @@
     {
         "inputs": [
             {
-                "name": "tokenId",
-                "type": "Uint256"
-            }
-        ],
-        "name": "tokenURI",
-        "outputs": [
-            {
-                "name": "tokenURI",
-                "type": "felt"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
                 "name": "owner",
                 "type": "felt"
             }
@@ -344,17 +327,6 @@
     {
         "inputs": [
             {
-                "name": "to",
-                "type": "felt"
-            }
-        ],
-        "name": "mint",
-        "outputs": [],
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
                 "name": "tokenId",
                 "type": "Uint256"
             },
@@ -475,6 +447,69 @@
         "type": "function"
     },
     {
+        "inputs": [],
+        "name": "baseTokenURI",
+        "outputs": [
+            {
+                "name": "baseTokenURI_len",
+                "type": "felt"
+            },
+            {
+                "name": "baseTokenURI",
+                "type": "felt*"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "tokenId",
+                "type": "Uint256"
+            }
+        ],
+        "name": "tokenURI",
+        "outputs": [
+            {
+                "name": "tokenURI_len",
+                "type": "felt"
+            },
+            {
+                "name": "tokenURI",
+                "type": "felt*"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "to",
+                "type": "felt"
+            }
+        ],
+        "name": "mint",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "to",
+                "type": "felt"
+            },
+            {
+                "name": "count",
+                "type": "felt"
+            }
+        ],
+        "name": "mintMany",
+        "outputs": [],
+        "type": "function"
+    },
+    {
         "inputs": [
             {
                 "name": "newMinter",
@@ -482,6 +517,21 @@
             }
         ],
         "name": "setMinter",
+        "outputs": [],
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "name": "baseTokenURI_len",
+                "type": "felt"
+            },
+            {
+                "name": "baseTokenURI",
+                "type": "felt*"
+            }
+        ],
+        "name": "setBaseTokenURI",
         "outputs": [],
         "type": "function"
     }

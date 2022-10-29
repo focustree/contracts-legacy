@@ -6,6 +6,7 @@ libs_path = "lib"
 
 ["protostar.shared_command_configs"]
 cairo-path = ["./lib/cairo_contracts/src", "./src"]
+disable-hint-validation = true
 
 ["protostar.format"]
 target = ["src", "tests", "migrations"]

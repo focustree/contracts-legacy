@@ -1,0 +1,8 @@
+{
+  "cairols": {
+    "cairoPath": ["/Users/gabin/src/focustree/contracts/src"],
+    "disableHintValidation": "./**/test_*.cairo",
+    "nileUseVenv": false,
+    "useVenv": false
+  }
+}

@@ -14,8 +14,6 @@ namespace ITreeERC721 {
     }
     func symbol() -> (symbol: felt) {
     }
-    func tokenURI(tokenId: Uint256) -> (tokenURI: felt) {
-    }
     // ERC721
     func balanceOf(owner: felt) -> (balance: Uint256) {
     }
@@ -44,5 +42,20 @@ namespace ITreeERC721 {
     func tokenOfOwnerByIndex(owner: felt, index: Uint256) -> (tokenId: Uint256) {
     }
     func burn(tokenId: Uint256) {
+    }
+    // Focus Tree
+    func minter() -> (minter: felt) {
+    }
+    func baseTokenURI() -> (baseTokenURI_len: felt, baseTokenURI: felt*) {
+    }
+    func tokenURI(tokenId: Uint256) -> (tokenURI_len: felt, tokenURI: felt*) {
+    }
+    func mint(to: felt) -> () {
+    }
+    func mintMany(to: felt, count: felt) -> () {
+    }
+    func setMinter(minter: felt) -> () {
+    }
+    func setBaseTokenURI(baseTokenURI_len: felt, baseTokenURI: felt*) -> () {
     }
 }
