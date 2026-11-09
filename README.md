@@ -1,3 +1,10 @@
+> **Archived (2026-11-09): Focus Tree no longer has any crypto.** Crypto rewards, mints and the
+> in-app wallets have ended; the holders' exit grace period closed on 2026-11-07. These are the
+> 2022-2023 Cairo 0 contracts (`TreeERC721`), superseded by
+> [focustree/contracts](https://github.com/focustree/contracts); any contract deployed from them
+> is left as is. The tree metadata they point to stays served at
+> `https://api.focustree.app/tree?id=<id>`. This repository is read-only.
+
 ## Setup
 
 1. [Install protostar](https://docs.swmansion.com/protostar/docs/tutorials/installation).
